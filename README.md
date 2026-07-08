@@ -14,12 +14,56 @@ Build or clean Texas Instruments CCS3.3 DSP projects via a Python-wrapped `timak
 - TI Code Composer Studio v3.3 installed, with `timake.exe` on your system `PATH`.
 - PowerShell 5+ (for the auto-elevation wrapper).
 
+## Setting up `timake.exe`
+
+Before running this tool, make sure Windows can find `timake.exe` and that it is allowed to run as administrator.
+
+### 1. Add `timake.exe` to your system `PATH`
+
+Find the folder that contains `timake.exe`. For a default CCS3.3 installation it is usually:
+
+```text
+G:\CCStudio_v3.3PLA\cc\bin
+```
+
+Add that folder to your system `PATH`:
+
+1. Press `Win + R`, type `sysdm.cpl`, and press Enter.
+2. Go to the **Advanced** tab → click **Environment Variables**.
+3. Under **System variables**, find and select `Path`, then click **Edit**.
+4. Click **New** and add the path to the folder containing `timake.exe`, for example:
+   ```text
+   G:\CCStudio_v3.3PLA\cc\bin
+   ```
+5. Click **OK** on all dialogs.
+6. Open a new terminal and verify with:
+   ```cmd
+   where timake
+   ```
+   It should print the full path to `timake.exe`.
+
+### 2. Set `timake.exe` to always run as administrator
+
+`timake.exe` needs administrator privileges to build CCS3.3 projects. Configure it once:
+
+1. Open File Explorer and navigate to the folder from step 1, e.g.:
+   ```text
+   G:\CCStudio_v3.3PLA\cc\bin
+   ```
+2. Right-click `timake.exe` → **Properties**.
+3. Go to the **Compatibility** tab.
+4. Click **Change settings for all users**.
+5. Check **Run this program as an administrator**.
+6. Click **OK**.
+
+> **Note:** `run_build.ps1` already tries to elevate the process via UAC. Setting `timake.exe` itself to run as administrator avoids privilege issues when the executable is invoked directly as well.
+
 ## Installation
 
 Clone this repository:
 
 ```bash
-git clone https://github.com/shousidaima/ccs3.3_project_build.git
+git clone https://github.com/Lawliet-66/ccs3.3_project_build.git
 cd ccs3.3_project_build
 ```
 
