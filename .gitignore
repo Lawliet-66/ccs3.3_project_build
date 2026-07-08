@@ -1,0 +1,22 @@
+# Build / runtime logs
+log_files/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.env
+.venv/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.suo
+*.user
+
+# OS files
+.DS_Store
+Thumbs.db
